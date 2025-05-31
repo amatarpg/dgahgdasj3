@@ -86,10 +86,10 @@ const MissionTerminal: React.FC = () => {
       {/* Mission Progress Overview */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         <div className="lg:col-span-2">
-          <div className="relative rounded-lg overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900 to-gray-900/80 border border-purple-500/20 backdrop-blur-sm p-3 sm:p-5">
+          <div className="relative rounded-lg overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900 to-gray-900/80 border border-purple-500/20 backdrop-blur-sm p-3 sm:p-5 h-full flex flex-col justify-between">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 via-cyan-400 to-green-400"></div>
             
-            <div className="space-y-4">
+            <div className="space-y-6">
               <div className="flex items-center justify-between">
                 <h2 className="text-lg font-orbitron font-bold text-white flex items-center gap-2">
                   <Target size={18} className="text-purple-400" />
@@ -115,6 +115,20 @@ const MissionTerminal: React.FC = () => {
                 </div>
                 <div className="text-xs text-gray-500 font-mono italic">
                   Synchronize with Terran frequencies to unlock Plasma-tier clearance
+                </div>
+              </div>
+
+              {/* Operation Stats */}
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-gray-800/30 rounded-lg p-3 border border-purple-900/30">
+                  <div className="text-xs font-mono text-gray-400 mb-1">ACTIVE SIGNALS</div>
+                  <div className="text-xl font-orbitron font-bold text-cyan-400">42</div>
+                  <div className="mt-1 text-xs font-mono text-gray-500">DETECTED</div>
+                </div>
+                <div className="bg-gray-800/30 rounded-lg p-3 border border-purple-900/30">
+                  <div className="text-xs font-mono text-gray-400 mb-1">QUANTUM FLUX</div>
+                  <div className="text-xl font-orbitron font-bold text-purple-400">87%</div>
+                  <div className="mt-1 text-xs font-mono text-gray-500">STABILITY</div>
                 </div>
               </div>
 
