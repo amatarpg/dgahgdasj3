@@ -1,5 +1,6 @@
 import React from 'react';
 import { Copy, X } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 interface ReferralModalProps {
   isOpen: boolean;
@@ -7,10 +8,22 @@ interface ReferralModalProps {
 }
 
 const ReferralModal: React.FC<ReferralModalProps> = ({ isOpen, onClose }) => {
-  const referralCode = "CIGAR-42069-VEGA"; // This would come from your actual referral system
+  const referralCode = "VEGA42"; // This would come from your actual referral system
+  const referralLink = `${window.location.origin}/?ref=${referralCode}`;
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(referralCode);
+    navigator.clipboard.writeText(referralLink);
+    toast.success('Referral link copied to clipboard', {
+      style: {
+        background: '#1a1b26',
+        color: '#fff',
+        border: '1px solid rgba(147, 51, 234, 0.2)',
+      },
+      iconTheme: {
+        primary: '#00e5ff',
+        secondary: '#1a1b26',
+      },
+    });
   };
 
   if (!isOpen) return null;
@@ -37,38 +50,23 @@ const ReferralModal: React.FC<ReferralModalProps> = ({ isOpen, onClose }) => {
 
         <div className="p-6">
           <h3 className="text-xl font-orbitron font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-cyan-300 to-green-400 mb-4">
-            Broadcast Invitation Signal
+            Share Your Signal
           </h3>
           
           <p className="text-sm font-mono text-gray-400 mb-6">
-            Share your quantum signature to expand the collective consciousness. Each successful assimilation strengthens the network.
+            Expand the network. Share your unique quantum signature.
           </p>
 
-          <div className="space-y-4">
-            <div className="bg-gray-800/50 rounded-lg p-4 border border-purple-900/30">
-              <div className="text-xs font-mono text-gray-400 mb-2">YOUR REFERRAL CODE</div>
-              <div className="flex items-center justify-between gap-3">
-                <code className="text-lg font-mono text-cyan-400">{referralCode}</code>
-                <button 
-                  onClick={copyToClipboard}
-                  className="p-2 bg-purple-500/20 border border-purple-500/30 rounded-lg text-purple-400 hover:text-cyan-400 transition-colors"
-                >
-                  <Copy size={16} />
-                </button>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3 text-center text-xs font-mono">
-              <div className="bg-gray-800/30 rounded-lg p-3 border border-purple-900/30">
-                <div className="text-gray-400 mb-1">REWARDS EARNED</div>
-                <div className="text-lg font-orbitron text-purple-400">300</div>
-                <div className="text-gray-500">$CIGAR</div>
-              </div>
-              <div className="bg-gray-800/30 rounded-lg p-3 border border-purple-900/30">
-                <div className="text-gray-400 mb-1">ALLIES RECRUITED</div>
-                <div className="text-lg font-orbitron text-cyan-400">2</div>
-                <div className="text-gray-500">OPERATIVES</div>
-              </div>
+          <div className="bg-gray-800/50 rounded-lg p-4 border border-purple-900/30">
+            <div className="text-xs font-mono text-gray-400 mb-2">YOUR REFERRAL LINK</div>
+            <div className="flex items-center justify-between gap-3">
+              <code className="text-sm font-mono text-cyan-400 truncate">{referralLink}</code>
+              <button 
+                onClick={copyToClipboard}
+                className="p-2 bg-purple-500/20 border border-purple-500/30 rounded-lg text-purple-400 hover:text-cyan-400 transition-colors"
+              >
+                <Copy size={16} />
+              </button>
             </div>
           </div>
         </div>
