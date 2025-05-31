@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlaskRound as Flask, Rocket, Gift, Target, Award, Users } from 'lucide-react';
+import { FlaskRound as Flask, Rocket, Gift, Megaphone, LineChart, Globe } from 'lucide-react';
 
 const MissionProgress: React.FC = () => {
   const completedTasks = 3;
@@ -10,19 +10,19 @@ const MissionProgress: React.FC = () => {
   // Mission stats data
   const missionStats = [
     {
-      icon: <Target size={16} className="text-purple-400" />,
+      icon: <Megaphone size={16} className="text-purple-400" />,
       label: "Social",
       value: "3/5",
       trend: "+2 this week"
     },
     {
-      icon: <Award size={16} className="text-cyan-400" />,
+      icon: <LineChart size={16} className="text-cyan-400" />,
       label: "Engagement",
       value: "4/7",
       trend: "+2 this week"
     },
     {
-      icon: <Users size={16} className="text-green-400" />,
+      icon: <Globe size={16} className="text-green-400" />,
       label: "Community",
       value: "1/3",
       trend: "+3 pending"
