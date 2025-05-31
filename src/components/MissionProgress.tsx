@@ -1,11 +1,33 @@
 import React from 'react';
-import { FlaskRound as Flask, Rocket, Gift } from 'lucide-react';
+import { FlaskRound as Flask, Rocket, Gift, Target, Award, Users } from 'lucide-react';
 
 const MissionProgress: React.FC = () => {
   const completedTasks = 3;
   const totalTasks = 7;
   const progress = (completedTasks / totalTasks) * 100;
   const isCompleted = completedTasks === totalTasks;
+
+  // Mission stats data
+  const missionStats = [
+    {
+      icon: <Target size={16} className="text-purple-400" />,
+      label: "Social",
+      value: "3/5",
+      trend: "+2 this week"
+    },
+    {
+      icon: <Award size={16} className="text-cyan-400" />,
+      label: "Engagement",
+      value: "4/7",
+      trend: "+2 this week"
+    },
+    {
+      icon: <Users size={16} className="text-green-400" />,
+      label: "Community",
+      value: "1/3",
+      trend: "+3 pending"
+    }
+  ];
 
   return (
     <div className="relative rounded-lg overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900 to-gray-900/80 border border-purple-500/20 backdrop-blur-sm p-5 h-full">
@@ -41,6 +63,27 @@ const MissionProgress: React.FC = () => {
           <div className="mt-2 text-xs text-gray-500 font-mono italic">
             Engage with Terran channels to unlock your fate
           </div>
+        </div>
+
+        {/* New Mission Stats Section */}
+        <div className="grid grid-cols-3 gap-3 py-4">
+          {missionStats.map((stat, index) => (
+            <div 
+              key={index}
+              className="bg-gray-800/30 rounded-lg p-3 border border-purple-900/30 hover:bg-gray-800/50 transition-all duration-300"
+            >
+              <div className="flex items-center gap-2 mb-2">
+                {stat.icon}
+                <span className="text-xs font-mono text-gray-400">{stat.label}</span>
+              </div>
+              <div className="font-orbitron text-lg text-white mb-1">
+                {stat.value}
+              </div>
+              <div className="text-xs font-mono text-cyan-400">
+                {stat.trend}
+              </div>
+            </div>
+          ))}
         </div>
 
         <button 
